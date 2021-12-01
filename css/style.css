@@ -72,14 +72,21 @@ main {
     border: 1px solid black;
 }
 
+.grid h2 {
+    padding: 2em;
+    text-align: center;
+}
+
 .square {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     border: 1px solid black;
-    width: 10%;
-    height: 10%;
+}
+
+.active {
+    background-color: #44d0ff;
 }
 
 footer {
