@@ -67,8 +67,8 @@ main {
 
 .grid {
     flex-wrap: wrap;
-    width: 50vh;
-    height: 50vh;
+    width: 65vh;
+    height: 65vh;
     border: 1px solid black;
 }
 
