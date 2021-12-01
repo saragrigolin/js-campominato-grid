@@ -34,15 +34,14 @@ buttonPlay.addEventListener('click', function () {
 
     //in base al livello di difficoltà, cambiano le colonne e le righe
     if (level == 'easy'){
-        row = 7;
-        col = 7;
-
+        row = 10;
+        col = 10;
     } else if (level == 'intermediate') {
         row = 9;
         col = 9;
     } else if (level == 'difficult') {
-        row = 10;
-        col = 10;
+        row = 7;
+        col = 7;
     }
 
     //calcolo grandezza della griglia e i numeri random da inserire dentro
