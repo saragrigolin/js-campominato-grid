@@ -15,3 +15,42 @@ Di cosa ho bisogno per generare i numeri?
 Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
 Le validazioni e i controlli possiamo farli in un secondo momento.
 */
+
+//l'utente indica un livello di difficoltà in base al quale viene generata una griglia di gioco quadrata, in cui ogni cella contiene un numero tra quelli compresi in un range
+
+//prendo il pulsante Play dal DOM
+const buttonPlay = document.getElementById('play');
+let containerGrid = document.getElementById('grid');
+
+//al suo click
+buttonPlay.addEventListener('click', function () {
+    grid.innerHTML = '';
+    //controllo valori inseriti dall'utente nella select
+    const level = document.getElementById('level').value;
+    //calcolo larghezza griglia
+    let row = 0;
+    let col = 0;
+
+    if (level == 'easy'){
+        row = 7;
+        col = 7;
+    } else if (level == 'intermediate') {
+        row = 9;
+        col = 9;
+    } else if (level == 'difficult') {
+        row = 10;
+        col = 10;
+    }
+    let numberSquare = row * col;
+    for (let index = 0; index < numberSquare; index++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        square.style.width = `calc(100% / ${col})`;
+        square.style.height = `calc(100% / ${row})`;
+        containerGrid.append(square);
+
+        square.addEventListener('click', function () {
+            this.classList.add('active');
+        })
+    }
+})
