@@ -32,22 +32,25 @@ buttonPlay.addEventListener('click', function () {
     let row = 0;
     let col = 0;
     let numbers = [];
-    let blackListNumbers = [5, 13, 27, 41, 49, 68, 80];
+    let blackListNumbers = [];
     
 
     //in base al livello di difficoltà, cambiano le colonne e le righe e i numeri che equivalgono alle bombe
     if (level == 'easy'){
         row = 10;
         col = 10;
-        
+        blackListNumbers = getRandomIntInclusive(1, 100);
+        console.log(blackListNumbers);
     } else if (level == 'intermediate') {
         row = 9;
         col = 9;
-        
+        blackListNumbers = getRandomIntInclusive(1, 81);
+        console.log(blackListNumbers);
     } else if (level == 'difficult') {
         row = 7;
         col = 7;
-        
+        blackListNumbers = getRandomIntInclusive(1, 49);
+        console.log(blackListNumbers);
     }
 
     //calcolo grandezza della griglia e i numeri random da inserire dentro
@@ -90,7 +93,7 @@ buttonPlay.addEventListener('click', function () {
                         <h4>Oh no, hai perso! Vuoi fare un'altra partita?</h4>
                         <button class="btn-blue" type="submit" onClick="refreshPage()">Gioca di nuovo</button>
                     </div>`;
-
+                    
                 //mostra il messaggio con un timeout di 800ms
                 setTimeout(function () {
                     grid.innerHTML += h4;
@@ -107,3 +110,26 @@ function refreshPage() {
     window.location.reload();
 }
 
+//funzione per creare numeri random nell'array blackList
+function getRandomIntInclusive(min, max) {
+
+    //creo array vuoto
+    let blackListNumbers = [];
+
+    //ciclo for per inserire 8 numeri unici nell'array
+    for (let index = 0; index < 8; index++) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+         //The maximum is inclusive and the minimum is inclusive
+        let element = blackListNumbers[index];
+        element = Math.floor(Math.random() * (max - min + 1) + min);
+
+        //controllo se il numero esiste già nell'array
+        while (blackListNumbers.includes(element)){
+            element = Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        blackListNumbers.push(element);
+        
+    }
+    return blackListNumbers;
+}
