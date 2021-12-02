@@ -26,7 +26,8 @@ let containerGrid = document.getElementById('grid');
 buttonPlay.addEventListener('click', function () {
     grid.innerHTML = '';
     //controllo valori inseriti dall'utente nella select
-    const level = document.getElementById('level').value;
+    let level = document.getElementById('level').value;
+    console.log(level);
 
     //dichiaro le colonne, le righe, l'array di numeri dei quadrati e l'array delle bombe
     let row = 0;
@@ -36,21 +37,25 @@ buttonPlay.addEventListener('click', function () {
     
 
     //in base al livello di difficoltà, cambiano le colonne e le righe e i numeri che equivalgono alle bombe
-    if (level == 'easy'){
-        row = 10;
-        col = 10;
-        blackListNumbers = getRandomIntInclusive(1, 100);
-        console.log(blackListNumbers);
-    } else if (level == 'intermediate') {
-        row = 9;
-        col = 9;
-        blackListNumbers = getRandomIntInclusive(1, 81);
-        console.log(blackListNumbers);
-    } else if (level == 'difficult') {
-        row = 7;
-        col = 7;
-        blackListNumbers = getRandomIntInclusive(1, 49);
-        console.log(blackListNumbers);
+    switch(level){
+        case 'easy':
+            row = 10;
+            col = 10;
+            blackListNumbers = getRandomIntInclusive(1, 100);
+            console.log(blackListNumbers);
+            break;
+        case 'intermediate':
+            row = 10;
+            col = 10;
+            blackListNumbers = getRandomIntInclusive(1, 100);
+            console.log(blackListNumbers);
+            break;
+        case 'difficult':
+            row = 7;
+            col = 7;
+            blackListNumbers = getRandomIntInclusive(1, 49);
+            console.log(blackListNumbers);
+            break;
     }
 
     //calcolo grandezza della griglia e i numeri random da inserire dentro
